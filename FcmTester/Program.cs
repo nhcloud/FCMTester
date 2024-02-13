@@ -1,5 +1,18 @@
-var builder = WebApplication.CreateBuilder(args);
+using Azure.Identity;
+using Microsoft.ApplicationInsights.AspNetCore.Extensions;
+using Microsoft.ApplicationInsights.Extensibility;
 
+var builder = WebApplication.CreateBuilder(args);
+var aiOptions = new ApplicationInsightsServiceOptions
+{
+    ConnectionString = Environment.GetEnvironmentVariable("APPLICATIONINSIGHTS_CONNECTION_STRING")
+};
+builder.Services.Configure<TelemetryConfiguration>(config =>
+{
+    var credential = new DefaultAzureCredential();
+    config.SetAzureTokenCredential(credential);
+});
+builder.Services.AddApplicationInsightsTelemetry(aiOptions);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
