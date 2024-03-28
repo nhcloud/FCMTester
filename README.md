@@ -1,4 +1,6 @@
 # FCMTester
 Google Firebase Cloud Messaging test tool
 
-A simple .NET 8 MVC project to test FCM using the Google JSON as FCM Token and generated Device token.
+A simple .NET 8 MVC project designed to test FCM, utilizing Google's JSON for the FCM Token and a generated device token.
+
+This code is hosted at https://fcm.udai.io/ should you wish to test push notifications.
